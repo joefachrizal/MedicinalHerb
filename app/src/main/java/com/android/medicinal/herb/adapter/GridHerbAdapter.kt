@@ -43,6 +43,7 @@ class GridHerbAdapter(val listHerbs: ArrayList<Herb>) :
                     .apply(RequestOptions().override(200, 200))
                     .into(img_item_photo)
                 title_herb.text = data.name
+
                 itemView.setOnClickListener {
                     onItemClickCallback.onItemClicked(data)
                 }

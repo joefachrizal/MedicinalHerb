@@ -10,7 +10,7 @@
         tools:context=".ListDataActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_heroes"
+            android:id="@+id/rv_list_herb"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_row_herb"/>

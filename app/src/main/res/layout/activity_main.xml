@@ -32,7 +32,7 @@
                 android:text="@string/descriptionTitle"/>
     </LinearLayout>
     <Button
-            android:id="@+id/btnIn"
+            android:id="@+id/btn_in"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginBottom="50dp"

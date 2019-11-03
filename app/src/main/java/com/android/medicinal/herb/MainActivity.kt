@@ -5,11 +5,11 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,12 +19,18 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = Color.TRANSPARENT
         }
 
-        btnIn.setOnClickListener {
-            startActivity(Intent(this@MainActivity, ListDataActivity::class.java))
-        }
+        btn_in.setOnClickListener(this)
+        btn_about.setOnClickListener(this)
+    }
 
-        btn_about.setOnClickListener {
-            startActivity(Intent(this@MainActivity, AboutActivity::class.java))
+    override fun onClick(v: View) {
+        when(v.id){
+            R.id.btn_in ->{
+                startActivity(Intent(this@MainActivity, ListDataActivity::class.java))
+            }
+            R.id.btn_about ->{
+                startActivity(Intent(this@MainActivity, AboutActivity::class.java))
+            }
         }
     }
 

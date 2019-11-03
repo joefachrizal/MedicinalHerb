@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.android.medicinal.herb.adapter.GridHerbAdapter
 import com.android.medicinal.herb.adapter.ListHerbAdapter
 import com.android.medicinal.herb.model.HerbDatas
@@ -18,7 +17,6 @@ import kotlinx.android.synthetic.main.activity_list_data.*
 import kotlinx.android.synthetic.main.content_list_data.*
 
 class ListDataActivity : AppCompatActivity() {
-    private lateinit var rvHeroes: RecyclerView
     private var list: ArrayList<Herb> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,12 +28,10 @@ class ListDataActivity : AppCompatActivity() {
             window.statusBarColor = Color.TRANSPARENT
         }
 
-        rvHeroes = rv_heroes
-        rvHeroes.setHasFixedSize(true)
-
-        list.addAll(HerbDatas.listData)
-
         showRecyclerList()
+
+        rv_list_herb.setHasFixedSize(true)
+        list.addAll(HerbDatas.listData)
 
         mode_tampil.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -47,9 +43,9 @@ class ListDataActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerList() {
-        rvHeroes.layoutManager = LinearLayoutManager(this)
+        rv_list_herb.layoutManager = LinearLayoutManager(this)
         val listHeroAdapter = ListHerbAdapter(list)
-        rvHeroes.adapter = listHeroAdapter
+        rv_list_herb.adapter = listHeroAdapter
 
         listHeroAdapter.setOnItemClickCallback(object : ListHerbAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Herb) {
@@ -59,9 +55,9 @@ class ListDataActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerGrid() {
-        rvHeroes.layoutManager = GridLayoutManager(this, 2)
+        rv_list_herb.layoutManager = GridLayoutManager(this, 2)
         val gridHeroAdapter = GridHerbAdapter(list)
-        rvHeroes.adapter = gridHeroAdapter
+        rv_list_herb.adapter = gridHeroAdapter
 
         gridHeroAdapter.setOnItemClickCallback(object : GridHerbAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Herb) {
@@ -69,7 +65,6 @@ class ListDataActivity : AppCompatActivity() {
             }
         })
     }
-
 
     private fun showSelectedHero(herb: Herb) {
         Toast.makeText(this, "Memuat Data " + herb.name, Toast.LENGTH_SHORT).show()

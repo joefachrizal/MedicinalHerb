@@ -5,17 +5,11 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
-import android.widget.ImageView
-import android.widget.TextView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail_data.*
 import kotlinx.android.synthetic.main.content_data.*
 
 class DetailDataActivity : AppCompatActivity() {
-
-    private lateinit var titleName: TextView
-    private lateinit var detailText: TextView
-    private lateinit var imageHeader: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +19,6 @@ class DetailDataActivity : AppCompatActivity() {
             setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
             window.statusBarColor = Color.TRANSPARENT
         }
-
-        imageHeader = image_header
-        titleName = title_herb
-        detailText = text_detail
 
         getData()
     }
@@ -40,10 +30,10 @@ class DetailDataActivity : AppCompatActivity() {
 
         Glide.with(this)
             .load(photo)
-            .into(imageHeader)
+            .into(image_header)
 
-        titleName.text = name
-        detailText.text = detail
+        title_herb.text = name
+        text_detail.text = detail
     }
 
     companion object {
