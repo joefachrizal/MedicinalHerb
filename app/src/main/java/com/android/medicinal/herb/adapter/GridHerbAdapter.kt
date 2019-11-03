@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.item_grid_layout.view.*
 /**
 Written by Muhammad Joe Fachrizal
  **/
-class GridHerbAdapter(val listHerbs: ArrayList<Herb>) : RecyclerView.Adapter<GridHerbAdapter.GridViewHolder>() {
+class GridHerbAdapter(val listHerbs: ArrayList<Herb>) :
+    RecyclerView.Adapter<GridHerbAdapter.GridViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -23,26 +24,31 @@ class GridHerbAdapter(val listHerbs: ArrayList<Herb>) : RecyclerView.Adapter<Gri
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_grid_layout, parent, false)
+        val view: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_grid_layout, parent, false)
         return GridViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return listHerbs.size
-    }
+    override fun getItemCount(): Int = listHerbs.size
 
     override fun onBindViewHolder(holder: GridViewHolder, position: Int) {
-        val (name, image) = listHerbs[position]
-        Glide.with(holder.itemView.context)
-            .load(listHerbs[position].image)
-            .into(holder.imgPhoto)
-        holder.titleHerb.text = name
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listHerbs[holder.adapterPosition]) }
+        holder.bind(listHerbs[position])
     }
 
     inner class GridViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imgPhoto: ImageView = itemView.img_item_photo
-        var titleHerb: TextView = itemView.title_herb
+        fun bind(data: Herb) {
+            with(itemView) {
+                Glide.with(itemView.context)
+                    .load(data.image)
+                    .apply(RequestOptions().override(200, 200))
+                    .into(img_item_photo)
+                title_herb.text = data.name
+                itemView.setOnClickListener {
+                    onItemClickCallback.onItemClicked(data)
+                }
+
+            }
+        }
     }
 
     interface OnItemClickCallback {

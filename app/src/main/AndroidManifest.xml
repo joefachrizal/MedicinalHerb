@@ -11,14 +11,14 @@
             android:roundIcon="@mipmap/ic_logomy_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".AboutAct">
+        <activity android:name=".AboutActivity">
         </activity>
         <activity
-                android:name=".ListDataAct"
+                android:name=".ListDataActivity"
                 android:theme="@style/AppTheme">
         </activity>
         <activity
-                android:name=".DetailDataAct"
+                android:name=".DetailDataActivity"
                 android:theme="@style/FullScreen.TransparentTheme">
         </activity>
         <activity

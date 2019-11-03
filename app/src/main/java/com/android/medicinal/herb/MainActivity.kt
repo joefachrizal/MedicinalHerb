@@ -20,11 +20,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnIn.setOnClickListener {
-            startActivity(Intent(this@MainActivity, ListDataAct::class.java))
+            startActivity(Intent(this@MainActivity, ListDataActivity::class.java))
         }
 
         btn_about.setOnClickListener {
-            startActivity(Intent(this@MainActivity, AboutAct::class.java))
+            startActivity(Intent(this@MainActivity, AboutActivity::class.java))
         }
     }
 

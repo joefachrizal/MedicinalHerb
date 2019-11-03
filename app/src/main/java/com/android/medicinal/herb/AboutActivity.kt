@@ -5,9 +5,9 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_about.*
 
-class AboutAct : AppCompatActivity() {
+class AboutActivity : AppCompatActivity() {
     val PHOTO_URL: String =
-        "https://www.dicoding.com/images/small/avatar/201710122153227b9539ec4f1304132789c4c56dce3fed.jpg"
+        "https://www.pokemoncenter.com/wcsstore/PokemonCatalogAssetStore/images/catalog/products/P4828/701-03127/P4828_701-03127_01.jpg"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

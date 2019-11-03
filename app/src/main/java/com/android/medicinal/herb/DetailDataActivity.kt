@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail_data.*
 import kotlinx.android.synthetic.main.content_data.*
 
-class DetailDataAct : AppCompatActivity() {
+class DetailDataActivity : AppCompatActivity() {
 
     private lateinit var titleName: TextView
     private lateinit var detailText: TextView

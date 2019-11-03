@@ -7,7 +7,7 @@
         tools:showIn="@layout/activity_list_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ListDataAct">
+        tools:context=".ListDataActivity">
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_heroes"

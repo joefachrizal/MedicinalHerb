@@ -17,14 +17,13 @@ import com.android.medicinal.herb.model.Herb
 import kotlinx.android.synthetic.main.activity_list_data.*
 import kotlinx.android.synthetic.main.content_list_data.*
 
-class ListDataAct : AppCompatActivity() {
+class ListDataActivity : AppCompatActivity() {
     private lateinit var rvHeroes: RecyclerView
     private var list: ArrayList<Herb> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_data)
-//        setSupportActionBar(toolbar)
 
         if (Build.VERSION.SDK_INT >= 21) {
             setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
@@ -74,10 +73,10 @@ class ListDataAct : AppCompatActivity() {
 
     private fun showSelectedHero(herb: Herb) {
         Toast.makeText(this, "Memuat Data " + herb.name, Toast.LENGTH_SHORT).show()
-        val moveWithDataIntent = Intent(this@ListDataAct, DetailDataAct::class.java)
-        moveWithDataIntent.putExtra(DetailDataAct.EXTRA_IMAGE, herb.image)
-        moveWithDataIntent.putExtra(DetailDataAct.EXTRA_NAME, herb.name)
-        moveWithDataIntent.putExtra(DetailDataAct.EXTRA_DETAIL, herb.detail)
+        val moveWithDataIntent = Intent(this@ListDataActivity, DetailDataActivity::class.java)
+        moveWithDataIntent.putExtra(DetailDataActivity.EXTRA_IMAGE, herb.image)
+        moveWithDataIntent.putExtra(DetailDataActivity.EXTRA_NAME, herb.name)
+        moveWithDataIntent.putExtra(DetailDataActivity.EXTRA_DETAIL, herb.detail)
         startActivity(moveWithDataIntent)
     }
 

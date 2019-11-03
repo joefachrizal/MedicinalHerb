@@ -43,9 +43,8 @@ class ListHerbAdapter(private val listHerbs: ArrayList<Herb>) : RecyclerView.Ada
         }
     }
 
-    override fun getItemCount(): Int {
-        return listHerbs.size
-    }
+    override fun getItemCount(): Int = listHerbs.size
+
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvName: TextView = itemView.findViewById(R.id.tv_item_name)
