@@ -394,7 +394,7 @@ object HerbDatas {
             for (aData in data) {
                 val hero = Herb()
                 hero.name = aData[0]
-                hero.from = aData[1]
+                hero.desc = aData[1]
                 hero.image = aData[2]
                 hero.detail = aData[3]
                 list.add(hero)

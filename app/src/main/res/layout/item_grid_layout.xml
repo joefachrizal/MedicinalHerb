@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
-        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
         <ImageView
                 android:id="@+id/img_item_photo"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginBottom="10dp"
                 android:scaleType="centerCrop"
-                tools:src="@color/colorAccent"/>
+                tools:src="@color/colorAccent"
+                android:contentDescription="@string/imageview" />
 
         <TextView
                 android:id="@+id/title_herb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:text="@string/title"
                 android:textSize="20sp"
-                android:text="Title"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

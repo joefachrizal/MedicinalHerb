@@ -11,17 +11,18 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.medicinal.herb.adapter.GridHerbAdapter
 import com.android.medicinal.herb.adapter.ListHerbAdapter
+import com.android.medicinal.herb.databinding.ActivityListDataBinding
 import com.android.medicinal.herb.model.HerbDatas
 import com.android.medicinal.herb.model.Herb
-import kotlinx.android.synthetic.main.activity_list_data.*
-import kotlinx.android.synthetic.main.content_list_data.*
 
 class ListDataActivity : AppCompatActivity() {
     private var list: ArrayList<Herb> = arrayListOf()
+    private lateinit var binding : ActivityListDataBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_data)
+        binding = ActivityListDataBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (Build.VERSION.SDK_INT >= 21) {
             setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
@@ -30,10 +31,10 @@ class ListDataActivity : AppCompatActivity() {
 
         showRecyclerList()
 
-        rv_list_herb.setHasFixedSize(true)
+        binding.rvListHerb.setHasFixedSize(true)
         list.addAll(HerbDatas.listData)
 
-        mode_tampil.setOnCheckedChangeListener { _, isChecked ->
+        binding.modeTampil.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 showRecyclerGrid()
             } else {
@@ -43,9 +44,9 @@ class ListDataActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerList() {
-        rv_list_herb.layoutManager = LinearLayoutManager(this)
+        binding.rvListHerb.layoutManager = LinearLayoutManager(this)
         val listHeroAdapter = ListHerbAdapter(list)
-        rv_list_herb.adapter = listHeroAdapter
+        binding.rvListHerb.adapter = listHeroAdapter
 
         listHeroAdapter.setOnItemClickCallback(object : ListHerbAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Herb) {
@@ -55,9 +56,9 @@ class ListDataActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerGrid() {
-        rv_list_herb.layoutManager = GridLayoutManager(this, 2)
+        binding.rvListHerb.layoutManager = GridLayoutManager(this, 2)
         val gridHeroAdapter = GridHerbAdapter(list)
-        rv_list_herb.adapter = gridHeroAdapter
+        binding.rvListHerb.adapter = gridHeroAdapter
 
         gridHeroAdapter.setOnItemClickCallback(object : GridHerbAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Herb) {
@@ -69,9 +70,7 @@ class ListDataActivity : AppCompatActivity() {
     private fun showSelectedHero(herb: Herb) {
         Toast.makeText(this, "Memuat Data " + herb.name, Toast.LENGTH_SHORT).show()
         val moveWithDataIntent = Intent(this@ListDataActivity, DetailDataActivity::class.java)
-        moveWithDataIntent.putExtra(DetailDataActivity.EXTRA_IMAGE, herb.image)
-        moveWithDataIntent.putExtra(DetailDataActivity.EXTRA_NAME, herb.name)
-        moveWithDataIntent.putExtra(DetailDataActivity.EXTRA_DETAIL, herb.detail)
+        moveWithDataIntent.putExtra(DetailDataActivity.EXTRA_DATA, herb)
         startActivity(moveWithDataIntent)
     }
 

@@ -1,59 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_awal"
         android:fitsSystemWindows="true"
         tools:context=".MainActivity">
 
-    <LinearLayout
-            android:id="@+id/title"
+    <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="135dp"
-            android:layout_marginStart="20dp"
-            android:orientation="vertical"
-            tools:ignore="RelativeOverlap">
+            android:text="@string/tittle"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.80"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="35sp"
-                android:text="@string/tittle"/>
+    <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/descriptionTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/descriptionTitle"/>
-    </LinearLayout>
     <Button
             android:id="@+id/btn_in"
             android:layout_width="150dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="50dp"
+            android:background="@drawable/button_kanan"
             android:text="@string/btnJelajah"
-            android:textStyle="bold"
-            android:textSize="16sp"
             android:textColor="@color/textColorDark"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/button_kanan"/>
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.55" />
 
     <Button
             android:id="@+id/btn_about"
             android:layout_width="150dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="50dp"
+            android:background="@drawable/button_kiri"
             android:text="@string/about"
-            android:textStyle="bold"
-            android:textSize="16sp"
             android:textColor="@color/textColorDark"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/button_kiri"/>
-</RelativeLayout>
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.55" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.item_grid_layout.view.*
 /**
 Written by Muhammad Joe Fachrizal
  **/
-class GridHerbAdapter(val listHerbs: ArrayList<Herb>) :
+class GridHerbAdapter(private val listHerbs: ArrayList<Herb>) :
     RecyclerView.Adapter<GridHerbAdapter.GridViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -28,8 +28,6 @@ class GridHerbAdapter(val listHerbs: ArrayList<Herb>) :
             LayoutInflater.from(parent.context).inflate(R.layout.item_grid_layout, parent, false)
         return GridViewHolder(view)
     }
-
-    override fun getItemCount(): Int = listHerbs.size
 
     override fun onBindViewHolder(holder: GridViewHolder, position: Int) {
         holder.bind(listHerbs[position])
@@ -51,6 +49,8 @@ class GridHerbAdapter(val listHerbs: ArrayList<Herb>) :
             }
         }
     }
+
+    override fun getItemCount(): Int = listHerbs.size
 
     interface OnItemClickCallback {
         fun onItemClicked(data: Herb)
